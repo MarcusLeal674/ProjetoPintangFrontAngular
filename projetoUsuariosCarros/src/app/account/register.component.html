@@ -1,1 +1,71 @@
-<h1>Register Page</h1>
+<!-- Modal Header -->
+<div class="modal-header">
+  <h4 class="modal-title">Atualizar do Usuário</h4>
+</div>
+<!-- Modal body -->
+<div class="modal-body">
+  <form>
+    <label for="exampleInputFirstName">Nome</label>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputFirstName"
+        aria-describedby="emailHelp"
+        placeholder="Nome"
+      />
+    </div>
+    <label for="exampleInputLastName">Sobrenome</label>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputLastName"
+        placeholder="Sobrenome"
+      />
+    </div>
+    <label for="exampleInputEmail1">Endereço de E-mail</label>
+    <div class="form-group">
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Endereço de E-mail"
+      />
+    </div>
+    <label for="exampleInputPassword1">Senha</label>
+    <div class="form-group">
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Password"
+      />
+    </div>
+    <label for="exampleInputPhone">Número do Celular</label>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputPhone"
+        aria-describedby="emailHelp"
+        placeholder="Número do Celular"
+      />
+    </div>
+    <label for="exampleInputPhone">Sua Função</label>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputRole"
+        placeholder="Sua Função"
+      />
+    </div>
+    <div class="form-check"></div>
+    <button type="submit" class="btn1 btn-primary">Registrar Usuário</button>
+    <button type="button" class="btn2 btn-secondary" data-bs-dismiss="modal" (click)="closeRegister()" >
+      Fechar
+    </button>
+  </form>
+</div>

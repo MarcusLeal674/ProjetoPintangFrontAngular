@@ -25,7 +25,6 @@ export class AccountService {
     }
 
     login(login: string, password: string) {
-      console.log('Login: ' + login);
         return this.http.post<User>(`${environment.apiUrl}/api/signin`, { login, password })
             .pipe(map(user => {
                 console.log(user)

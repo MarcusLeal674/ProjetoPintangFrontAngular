@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -12,12 +15,16 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { LoginComponent, RegisterComponent } from './account';
 
+
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        MatDialogModule,
+        MatTableModule,
+        MatButtonModule
     ],
     declarations: [
         AppComponent,
