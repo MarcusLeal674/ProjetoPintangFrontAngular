@@ -27,10 +27,10 @@ export class AccountService {
     login(login: string, password: string) {
         return this.http.post<User>(`${environment.apiUrl}/api/signin`, { login, password })
             .pipe(map(user => {
-                console.log(user)
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
-                this.userSubject.next(user);
+              // store user details and jwt token in local storage to keep user logged in between page refreshes
+              localStorage.setItem('user', JSON.stringify(user));
+              this.userSubject.next(user);
+              console.log('Return: ' + user)
                 return user;
             }));
     }

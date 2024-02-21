@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigateByUrl(returnUrl);
                 },
                 error: error => {
-                    this.error = error;
+                    this.error = 'Invalid login or password';
                     this.loading = false;
                 }
             });
