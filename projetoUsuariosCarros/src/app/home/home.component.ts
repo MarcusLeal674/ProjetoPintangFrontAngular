@@ -1,45 +1,22 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { Car } from '@app/_interfaces/car';
 import { Users } from '@app/_interfaces/users';
 import { HomeService } from '@app/_services/home.service';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
 
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  form!: FormGroup;
   users: Users[] = [];
   cars: Car[] = [];
   user!: Users;
+  msg: string = '';
 
-  inputData!: HTMLInputElement;
-  inputQuantidade!: HTMLInputElement;
-
-  constructor(
-    private service: HomeService,
-    private fb: FormBuilder
-    ) {
-      this.form = this.fb.group({
-        nome: [null, [Validators.required]],
-      });
-
-    }
+  constructor(private service: HomeService) {}
 
   ngOnInit(): void {
     this.listUsers();
-  }
-
-  postarDados() {
-    const dados = this.form.value;
-    const inputData = document.getElementById('users');
-    console.log(inputData);
   }
 
   listUsers(): void {
@@ -50,7 +27,8 @@ export class HomeComponent implements OnInit {
   }
 
   deleteUser(user: Users): void {
-    this.service.deleteUser(user.idUsers).subscribe((users: string) => {
+    this.service.deleteUser(user.idUsers).subscribe((msg: string) => {
+      this.msg = msg
     });
     const index = this.users.indexOf(user);
     if (index !== -1) this.users.splice(index, 1);
@@ -72,5 +50,24 @@ export class HomeComponent implements OnInit {
     if (modelDiv != null) {
       modelDiv.style.display = 'none';
     }
+  }
+
+  updateModel(): void {
+    this.service.updateUser(this.setUser(), this.setUser().idUsers).subscribe((msg: string) => {
+      this.msg = msg
+      this.listUsers();
+    });
+  }
+
+  setUser() {
+    this.user.idUsers = parseFloat((<HTMLInputElement>document.getElementById("idInputFirstName")).value);
+    this.user.firstName = (<HTMLInputElement>document.getElementById("exampleInputFirstName")).value;
+    this.user.lastName = (<HTMLInputElement>document.getElementById("exampleInputLastName")).value;
+    this.user.email = (<HTMLInputElement>document.getElementById("exampleInputEmail")).value;
+    this.user.password = (<HTMLInputElement>document.getElementById("exampleInputPassword")).value;
+    this.user.phone = (<HTMLInputElement>document.getElementById("exampleInputPhone")).value;
+    this.user.role = (<HTMLInputElement>document.getElementById("exampleInputRole")).value;
+    this.user.login = (<HTMLInputElement>document.getElementById("exampleInputLogin")).value;
+    return this.user;
   }
 }

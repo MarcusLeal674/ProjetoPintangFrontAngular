@@ -41,10 +41,11 @@
       </div>
       <!-- Modal body -->
       <div class="modal-body" *ngIf="user">
-        <form>
+        <form >
+          <input type="hidden" value="{{ user.idUsers }}" class="form-control" id="idInputFirstName" aria-describedby="emailHelp" placeholder="Nome" >
           <label for="exampleInputFirstName">Nome</label>
           <div class="form-group">
-            <input type="text" value="{{ user.firstName }}" class="form-control" id="exampleInputFirstName" aria-describedby="emailHelp" placeholder="Nome">
+            <input type="text" value="{{ user.firstName }}" class="form-control" id="exampleInputFirstName" aria-describedby="emailHelp" placeholder="Nome" >
           </div>
           <label for="exampleInputLastName">Sobrenome</label>
           <div class="form-group">
@@ -52,11 +53,11 @@
           </div>
           <label for="exampleInputEmail1">Endereço de E-mail</label>
           <div class="form-group">
-            <input type="email" value="{{ user.email }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Endereço de E-mail">
+            <input type="email" value="{{ user.email }}" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Endereço de E-mail">
           </div>
           <label for="exampleInputPassword1">Senha</label>
           <div class="form-group">
-            <input type="password" value="{{ user.password }}" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" value="{{ user.password }}" class="form-control" id="exampleInputPassword" placeholder="Password">
           </div>
           <label for="exampleInputPhone">Número do Celular</label>
           <div class="form-group">
@@ -66,8 +67,12 @@
           <div class="form-group">
             <input type="text" value="{{ user.role }}" class="form-control" id="exampleInputRole" placeholder="Sua Função">
           </div>
+          <label for="exampleInputPhone">Login do Usuário</label>
+          <div class="form-group">
+            <input type="text" value="{{ user.login }}" class="form-control" id="exampleInputLogin" placeholder="Sua Função">
+          </div>
           <div class="form-check"></div>
-          <button type="submit" class="btn1 btn-primary">Atualizar</button>
+          <button type="submit" class="btn1 btn-primary" (click)="updateModel()">Atualizar</button>
           <button type="button" class="btn2 btn-secondary"  data-bs-dismiss="modal" (click)="closeModel()">Fechar</button>
         </form>
       </div>
