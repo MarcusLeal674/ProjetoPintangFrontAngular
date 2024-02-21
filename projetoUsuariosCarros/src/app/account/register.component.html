@@ -1,6 +1,6 @@
 <!-- Modal Header -->
 <div class="modal-header">
-  <h4 class="modal-title">Atualizar do Usuário</h4>
+  <h4 class="modal-title">Usuário</h4>
 </div>
 <!-- Modal body -->
 <div class="modal-body">
@@ -10,10 +10,14 @@
       <input
         type="text"
         class="form-control"
-        id="exampleInputFirstName"
+        id="customControlValidation1"
         aria-describedby="emailHelp"
         placeholder="Nome"
       />
+      <label class="custom-control-label" for="customControlValidation1"
+        >Check this custom checkbox</label
+      >
+      <div class="invalid-feedback">Example invalid feedback text</div>
     </div>
     <label for="exampleInputLastName">Sobrenome</label>
     <div class="form-group">
@@ -53,7 +57,7 @@
         placeholder="Número do Celular"
       />
     </div>
-    <label for="exampleInputPhone">Sua Função</label>
+    <label for="exampleInputRole">Sua Função</label>
     <div class="form-group">
       <input
         type="text"
@@ -61,11 +65,30 @@
         id="exampleInputRole"
         placeholder="Sua Função"
       />
+      <div *ngFor="let car of cars">
+        <app-car></app-car>
+      </div>
+      <div class="modal-header">
+        <button
+          type="submit"
+          class="btn2 btn-primary"
+          id="idCarro"
+          (click)="addCars()">
+          <i class="material-icons">add</i>
+        </button>
+      </div>
     </div>
-    <div class="form-check"></div>
-    <button type="submit" class="btn1 btn-primary">Registrar Usuário</button>
-    <button type="button" class="btn2 btn-secondary" data-bs-dismiss="modal" (click)="closeRegister()" >
-      Fechar
-    </button>
+
+    <div class="modal-body">
+      <button type="submit" class="btn1 btn-primary">Salvar</button>
+      <button
+        type="button"
+        class="btn2 btn-secondary"
+        data-bs-dismiss="modal"
+        (click)="closeRegister()"
+      >
+        Fechar
+      </button>
+    </div>
   </form>
 </div>
