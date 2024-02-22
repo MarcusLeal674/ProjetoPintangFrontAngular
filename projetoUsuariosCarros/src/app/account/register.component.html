@@ -4,70 +4,36 @@
 </div>
 <!-- Modal body -->
 <div class="modal-body">
-  <form>
-    <label for="exampleInputFirstName">Nome</label>
-    <div class="form-group">
-      <input
-        type="text"
-        class="form-control"
-        id="customControlValidation1"
-        aria-describedby="emailHelp"
-        placeholder="Nome"
-      />
-      <label class="custom-control-label" for="customControlValidation1"
-        >Check this custom checkbox</label
-      >
-      <div class="invalid-feedback">Example invalid feedback text</div>
-    </div>
-    <label for="exampleInputLastName">Sobrenome</label>
-    <div class="form-group">
-      <input
-        type="text"
-        class="form-control"
-        id="exampleInputLastName"
-        placeholder="Sobrenome"
-      />
-    </div>
-    <label for="exampleInputEmail1">Endereço de E-mail</label>
-    <div class="form-group">
-      <input
-        type="email"
-        class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        placeholder="Endereço de E-mail"
-      />
-    </div>
-    <label for="exampleInputPassword1">Senha</label>
-    <div class="form-group">
-      <input
-        type="password"
-        class="form-control"
-        id="exampleInputPassword1"
-        placeholder="Password"
-      />
-    </div>
-    <label for="exampleInputPhone">Número do Celular</label>
-    <div class="form-group">
-      <input
-        type="text"
-        class="form-control"
-        id="exampleInputPhone"
-        aria-describedby="emailHelp"
-        placeholder="Número do Celular"
-      />
-    </div>
-    <label for="exampleInputRole">Sua Função</label>
-    <div class="form-group">
-      <input
-        type="text"
-        class="form-control"
-        id="exampleInputRole"
-        placeholder="Sua Função"
-      />
-      <div *ngFor="let car of cars">
-        <app-car></app-car>
+    <form >
+      <label for="exampleInputFirstName">Nome</label>
+      <div class="form-group">
+        <input type="text" value="" class="form-control" id="exampleInputFirstName" aria-describedby="emailHelp" placeholder="Nome" >
       </div>
+      <label for="exampleInputLastName">Sobrenome</label>
+      <div class="form-group">
+        <input type="text" value="" class="form-control" id="exampleInputLastName" placeholder="Sobrenome">
+      </div>
+      <label for="exampleInputEmail1">Endereço de E-mail</label>
+      <div class="form-group">
+        <input type="email" value="" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Endereço de E-mail">
+      </div>
+      <label for="exampleInputPassword1">Senha</label>
+      <div class="form-group">
+        <input type="password" value="" class="form-control" id="exampleInputPassword" placeholder="Password">
+      </div>
+      <label for="exampleInputPhone">Número do Celular</label>
+      <div class="form-group">
+        <input type="text" value="" class="form-control" id="exampleInputPhone" aria-describedby="emailHelp" placeholder="Número do Celular">
+      </div>
+      <label for="exampleInputPhone">Sua Função</label>
+      <div class="form-group">
+        <input type="text" value="" class="form-control" id="exampleInputRole" placeholder="Sua Função">
+      </div>
+      <label for="exampleInputPhone">Login do Usuário</label>
+      <div class="form-group">
+        <input type="text" value="" class="form-control" id="exampleInputLogin" placeholder="Sua Função">
+      </div>
+
       <div class="modal-header">
         <button
           type="submit"
@@ -77,10 +43,9 @@
           <i class="material-icons">add</i>
         </button>
       </div>
-    </div>
 
     <div class="modal-body">
-      <button type="submit" class="btn1 btn-primary">Salvar</button>
+      <button type="submit" class="btn1 btn-primary" (click)="saveModel()">Salvar</button>
       <button
         type="button"
         class="btn2 btn-secondary"

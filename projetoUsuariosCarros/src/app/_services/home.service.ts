@@ -29,7 +29,12 @@ export class HomeService {
   updateUser(user: Users, id: number): Observable<string> {
     return this.http.put<string>(`${environment.apiUrl}/api/users/${id}`, user)
     .pipe(tap(msg => {
-      console.log('Update: ' + msg)
+      return msg; }));
+  }
+
+  saveUser(user: Users): Observable<string> {
+    return this.http.post<string>(`${environment.apiUrl}/api/users`, user)
+    .pipe(tap(msg => {
       return msg; }));
   }
 }

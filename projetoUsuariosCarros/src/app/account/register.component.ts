@@ -1,9 +1,9 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
 import { User } from '@app/_models';
 import { AccountService } from '@app/_services/account.service';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { Car } from '@app/_interfaces/car';
+import { Users } from '@app/_interfaces/users';
+import { HomeService } from '@app/_services/home.service';
 
 @Component({
   templateUrl: './register.component.html',
@@ -13,10 +13,13 @@ import { Car } from '@app/_interfaces/car';
 export class RegisterComponent {
 [x: string]: any;
   user?: User | null;
-  cars: number[] = [];
+  addCar: number[] = [];
+  users!: Users;
+  car!: Car
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private homeService: HomeService
     ) {
     this.accountService.user.subscribe((x) => (this.user = x));
   }
@@ -25,24 +28,32 @@ export class RegisterComponent {
     this.accountService.logout();
   }
 
-
-  createItems() {
-    return this.builder.group({
-      temporalidad: [],
-      descripcion: [],
-      fileImg: this.builder.array([])
-    });
-
-  }
-
   addCars(): void{
-    this.cars.push(1);
+    this.addCar.push(1);
   }
 
-  removeAnalisis(index: number) {
-    //this.tempArray.removeAt(index);
+  saveModel(): void {
+    this.homeService.saveUser(this.setUser()).subscribe((msg: string) => {
+      this.msg = msg
+    });
   }
 
-  //get analisisArray() { return this.dataForm.get('analisis') as FormArray; }
-  //get tempArray() { return this.dataForm.controls.analisis as FormArray; }
+  setUser() {
+    this.users.password = (<HTMLInputElement>document.getElementById("exampleInputPassword")).value;
+    this.users.firstName = (<HTMLInputElement>document.getElementById("exampleInputFirstName")).value;
+    this.users.lastName = (<HTMLInputElement>document.getElementById("exampleInputLastName")).value;
+    this.users.email = (<HTMLInputElement>document.getElementById("exampleInputEmail")).value;
+    this.users.phone = (<HTMLInputElement>document.getElementById("exampleInputPhone")).value;
+    this.users.role = (<HTMLInputElement>document.getElementById("exampleInputRole")).value;
+    this.users.login = (<HTMLInputElement>document.getElementById("exampleInputLogin")).value;
+
+    this.car.year = parseFloat((<HTMLInputElement>document.getElementById("exampleInputYear")).value);
+    this.car.color = (<HTMLInputElement>document.getElementById("exampleInputColor")).value;
+    this.car.licensePlate = (<HTMLInputElement>document.getElementById("exampleInputLicensePlate")).value;
+    this.car.model = (<HTMLInputElement>document.getElementById("exampleInputModel")).value;
+
+    this.users.cars.push(this.car);
+
+    return this.users;
+  }
 }
